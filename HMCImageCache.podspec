@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HMCImageCache'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Support caching images balancing between I/O and memory with LRU algorithm'
   s.description      = <<-DESC
 HMCImageCache is a utility supporting caching images with balancing between I/O read write and memory usage by LRU (Least recently use) algorithm as well as calculating available memory size. It also support generating UIImage with target size.
@@ -20,6 +20,6 @@ HMCImageCache is a utility supporting caching images with balancing between I/O 
   # }
 
   s.public_header_files = 'HMCImageCache/Classes/**/*.h'
-  s.frameworks = 'UIKit'
+  s.frameworks = 'UIKit','ImageIO'
   s.dependency 'HMCThreadSafeMutableCollection', '~> 0.1.0'
 end
