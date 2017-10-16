@@ -8,7 +8,7 @@
 ## Component Libraries
 [HMCThreadSafeMutableCollection](http://cocoapods.org/pods/HMCThreadSafeMutableCollection) provides thread safe array and dictionary
 ## Requirements
-- iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- iOS 8.0+
 - Xcode 8.3+
 
 ## Features
