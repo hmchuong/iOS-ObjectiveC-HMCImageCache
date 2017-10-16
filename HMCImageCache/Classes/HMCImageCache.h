@@ -6,6 +6,7 @@
 //  Copyright © 2017 Chương M. Huỳnh. All rights reserved.
 //
 
+@import ImageIO
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
