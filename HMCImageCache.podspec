@@ -11,6 +11,8 @@ HMCImageCache is a utility supporting caching images with balancing between I/O 
   s.author           = { 'Chuong M. Huynh' => 'minhchuong.itus@gmail.com' }
   s.source           = { :git => 'https://github.com/hmchuong/iOS-Objectivec-HMCImageCache', :tag => s.version.to_s }
 
+  s.ios.deployment_target = '8.0'
+
   s.source_files = 'HMCImageCache/Classes/**/*'
 
   # s.resource_bundles = {
