@@ -4,6 +4,9 @@
 [![Version](https://img.shields.io/cocoapods/v/HMCImageCache.svg?style=flat)](http://cocoapods.org/pods/HMCImageCache)
 [![License](https://img.shields.io/cocoapods/l/HMCImageCache.svg?style=flat)](http://cocoapods.org/pods/HMCImageCache)
 [![Platform](https://img.shields.io/cocoapods/p/HMCImageCache.svg?style=flat)](http://cocoapods.org/pods/HMCImageCache)
+
+## Component Libraries
+[HMCThreadSafeMutableCollection](http://cocoapods.org/pods/HMCThreadSafeMutableCollection) provides thread safe array and dictionary
 ## Requirements
 - iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 8.3+
