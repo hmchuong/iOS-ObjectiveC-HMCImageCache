@@ -19,7 +19,7 @@ HMCImageCache is a utility supporting caching images with balancing between I/O 
   #   'HMCImageCache' => ['HMCImageCache/Assets/*.png']
   # }
 
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'HMCImageCache/Classes/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'HMCThreadSafeMutableCollection', '~> 0.0.2'
 end
