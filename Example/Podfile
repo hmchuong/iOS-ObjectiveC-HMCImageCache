@@ -1,0 +1,6 @@
+use_frameworks!
+target 'HMCImageCache_Tests' do
+  pod 'HMCImageCache', :path => '../'
+  
+  
+end
