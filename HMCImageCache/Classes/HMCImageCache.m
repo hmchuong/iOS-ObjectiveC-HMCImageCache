@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSFileManager *icFileManager;     // File manager
 @property (strong, nonatomic) LRUMemoryCache *icMemCache;       // Memory cache
-@property (strong, nonatomic) dispatch_queue_t icIOQueue;       // Queue for read/write file serial
+@property (nonatomic) dispatch_queue_t icIOQueue;       // Queue for read/write file serial
 @property (strong, nonatomic) NSString *icDirPath;              // Directory path for save file
 
 @end
