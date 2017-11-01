@@ -10,6 +10,7 @@
 #import "NSDate+Extension.h"
 #import "HMCSystemHelper.h"
 #import "LRUMemoryCache.h"
+#import "HMCDownloadManager.h"
 
 @interface HMCImageCache()
 
@@ -409,8 +410,16 @@
  */
 - (UIImage *)resizeImageAtPath:(NSURL *)imagePath maxSize:(CGFloat)maxSize {
     
+    if (maxSize <= 0) {
+        return nil;
+    }
+    
     // Create the image source
     CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef) imagePath, NULL);
+    
+    if (src == nil) {
+        return nil;
+    }
     
     // Create thumbnail options
     CFDictionaryRef options = (__bridge CFDictionaryRef) @{
@@ -427,6 +436,61 @@
     UIImage *image = [UIImage imageWithCGImage:thumbnail];
     
     return image;
+}
+
+/**
+ Sanitize filename string
+
+ @param fileName filename to santinize
+ @return santinized filename
+ */
+- (NSString *)sanitizeFileNameString:(NSString *)fileName {
+    
+    NSCharacterSet* illegalFileNameCharacters = [NSCharacterSet characterSetWithCharactersInString:@"/\\?%*|\"<>"];
+    return [[fileName componentsSeparatedByCharactersInSet:illegalFileNameCharacters] componentsJoinedByString:@""];
+}
+
+- (void)imageFromURL:(NSURL *)url
+      withTargetSize:(CGSize)size
+          completion:(void (^)(UIImage *))completionCallback
+       callbackQueue:(dispatch_queue_t)queue {
+    
+    // Check existed file
+    NSString *key = [self sanitizeFileNameString:url.absoluteString];
+    
+    
+    UIImage *__block result = [self imageFromKey:key withSize:size];
+    
+    if (result != nil) {
+        dispatch_async(queue, ^{
+            completionCallback(result);
+        });
+    } else{
+        
+        // Download image
+        [HMCDownloadManager.sharedBackgroundManager startDownloadFromURL:url progressBlock:^(NSURL *sourceUrl, NSString *identifier, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+            
+        } destination:^NSURL *(NSURL *sourceUrl, NSString *identifier) {
+            return [NSURL fileURLWithPath:[self getFilePathFromKey:key]];
+        } finishBlock:^(NSURL *sourceUrl, NSString *identifier, NSURL *fileLocation, NSError *error) {
+            result = [self imageFromKey:key withSize:size];
+            completionCallback(result);
+        } queue:queue];
+        
+    }
+}
+- (void)setImageFromURL:(NSURL *)url
+            toImageView:(UIImageView *)imageView {
+    
+    if (imageView.frame.size.height == 0 && imageView.frame.size.width == 0) {
+        return;
+    }
+    
+    [self imageFromURL:url
+        withTargetSize:imageView.frame.size
+            completion:^(UIImage *image) {
+                [imageView setImage:image];
+            } callbackQueue:dispatch_get_main_queue()];
 }
 
 @end

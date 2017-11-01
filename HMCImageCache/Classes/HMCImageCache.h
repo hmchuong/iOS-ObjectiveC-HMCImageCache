@@ -58,6 +58,28 @@
                  withSize:(CGSize)size;
 
 /**
+ Download, cache and set image to UIImageView
+
+ @param url url to download image
+ @param imageView imageView to load to
+ */
+- (void)setImageFromURL:(NSURL *) url
+            toImageView:(UIImageView *)imageView;
+
+/**
+ Get image from url with target size
+
+ @param url url to download image
+ @param size size of target image
+ @param completionCallback callback to get target image
+ @param queue queue to callback
+ */
+- (void)imageFromURL:(NSURL *)url
+      withTargetSize:(CGSize)size
+          completion:(void(^)(UIImage *image))completionCallback
+       callbackQueue:(dispatch_queue_t)queue;
+
+/**
  Remove image with key from cache
 
  @param key - key of image
