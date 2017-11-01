@@ -18,6 +18,8 @@
 - [x] Auto adjusting memory usage based on avaiable memory *(5% of available mem in background, 80% of available mem in foreground)* 
 - [x] Release memory by LRU algorithm
 - [x] Auto remove unsued cache files on disk after 30 days 
+- [x] Get image from url with target size
+- [x] Set UIImageView with image from URL
 
 ## Installation
 
@@ -51,6 +53,23 @@ image = [imageCache imageFromKey:identifier storeToMem:YES];  // storeToMem: do 
 ```ObjectiveC
 CGSize size = CGSizeMake(300,400); // Image with size 300px x 400 px
 image = [imageCache imageFromKey:identifier withSize:size];
+```
+
+### To get image from URL
+```ObjectiveC
+[imageCache imageFromURL:url
+          withTargetSize:CGSizeMake(300,400)
+              completion:^(UIImage *image){
+                  // do something with image
+              }
+           callbackQueue:dispatch_get_main_queue()];
+```
+
+### To set image to UIImageView from URL
+```ObjectiveC
+NSURL *url;
+UIImageView *imageView;
+[imageCache setImageFromURL:url toImageView:imageView];
 ```
 
 ### To remove an image from cache
