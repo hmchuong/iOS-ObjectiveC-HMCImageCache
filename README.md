@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/HMCImageCache.svg?style=flat)](http://cocoapods.org/pods/HMCImageCache)
 
 ## Component Libraries
-[HMCThreadSafeMutableCollection](http://cocoapods.org/pods/HMCThreadSafeMutableCollection) provides thread safe array and dictionary
+[HMCThreadSafeMutableCollection](http://cocoapods.org/pods/HMCThreadSafeMutableCollection) provides thread safe array and dictionary  
 [HMCDownloadManager](http://cocoapods.org/pods/HMCDownloadManager) provides API for caching image from URL
 ## Requirements
 - iOS 8.0+
