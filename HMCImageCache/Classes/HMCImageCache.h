@@ -12,7 +12,7 @@
 
 #define MAXIMUM_MEMORY_RATIO 0.8
 #define MINIMUM_MEMORY_RATIO 0.05
-#define EXPIRATION_DAYS 30                  // Clear file on disk after 30 days
+#define IMAGE_CACHE_EXPIRATION_DAYS 30                  // Clear file on disk after 30 days
 
 /**
  HMCImageCache utility - support caching equally between disk and memory
@@ -56,15 +56,6 @@
  */
 - (UIImage *)imageFromKey:(NSString *)key
                  withSize:(CGSize)size;
-
-/**
- Download, cache and set image to UIImageView
-
- @param url url to download image
- @param imageView imageView to load to
- */
-- (void)setImageFromURL:(NSURL *) url
-            toImageView:(UIImageView *)imageView;
 
 /**
  Get image from url with target size

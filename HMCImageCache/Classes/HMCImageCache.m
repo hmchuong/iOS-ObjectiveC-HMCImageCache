@@ -352,7 +352,7 @@
             
             // Skip if last modified date is in threshold
             NSDate *today = [NSDate date];
-            if ([NSDate daysBetweenDate:lastModifiedDate andDate:today] <= EXPIRATION_DAYS) {
+            if ([NSDate daysBetweenDate:lastModifiedDate andDate:today] <= IMAGE_CACHE_EXPIRATION_DAYS) {
                 continue;
             }
             
@@ -478,19 +478,6 @@
         } queue:queue];
         
     }
-}
-- (void)setImageFromURL:(NSURL *)url
-            toImageView:(UIImageView *)imageView {
-    
-    if (imageView.frame.size.height == 0 && imageView.frame.size.width == 0) {
-        return;
-    }
-    
-    [self imageFromURL:url
-        withTargetSize:imageView.frame.size
-            completion:^(UIImage *image) {
-                [imageView setImage:image];
-            } callbackQueue:dispatch_get_main_queue()];
 }
 
 @end
