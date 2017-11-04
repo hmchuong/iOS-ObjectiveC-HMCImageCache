@@ -72,6 +72,13 @@ UIImageView *imageView;
 [imageView HMCSetImageFromURL:url];
 ```
 
+### To set image to UIButton from URL
+```ObjectiveC
+NSURL *url;
+UIButton *button;
+[button HMCSetImageFromURL:url forState: UIControlStateNormal];
+```
+
 ### To remove an image from cache
 ```ObjectiveC
 [imageCache removeImageForKey:identifier];
