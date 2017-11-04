@@ -69,7 +69,7 @@ image = [imageCache imageFromKey:identifier withSize:size];
 ```ObjectiveC
 NSURL *url;
 UIImageView *imageView;
-[imageCache setImageFromURL:url toImageView:imageView];
+[imageView HMCSetImageFromURL:url];
 ```
 
 ### To remove an image from cache
