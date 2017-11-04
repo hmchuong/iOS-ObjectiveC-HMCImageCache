@@ -7,7 +7,7 @@
 
 ## Component Libraries
 [HMCThreadSafeMutableCollection](http://cocoapods.org/pods/HMCThreadSafeMutableCollection) provides thread safe array and dictionary  
-[HMCDownloadManager](http://cocoapods.org/pods/HMCDownloadManager) provides API for caching image from URL
+[HMCDownloadManager](http://cocoapods.org/pods/HMCDownloadManager) provides APIs for downloading image from URL
 ## Requirements
 - iOS 8.0+
 - Xcode 8.3+
