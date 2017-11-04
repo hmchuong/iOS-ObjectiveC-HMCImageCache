@@ -20,6 +20,7 @@
 - [x] Auto remove unsued cache files on disk after 30 days 
 - [x] Get image from url with target size
 - [x] Set UIImageView with image from URL
+- [x] Set UIButton with image from URL
 
 ## Installation
 
