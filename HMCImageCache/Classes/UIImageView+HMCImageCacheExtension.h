@@ -14,7 +14,9 @@
  Download, cache and set image to UIImageView
  
  @param url url to download image
+ @param state state of control
  */
-- (void)HMCSetImageFromURL:(NSURL *) url;
+- (void)HMCSetImageFromURL:(NSURL *) url
+                  forState:(UIControlState)state;;
 
 @end

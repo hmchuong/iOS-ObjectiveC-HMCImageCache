@@ -14,8 +14,9 @@
  Download, cache and set image to UIButton
  
  @param url url to download image
+ @param state state of control
  */
 - (void)HMCSetImageFromURL:(NSURL *) url
-                     forState:(UIControlState)state;
+                  forState:(UIControlState)state;
 
 @end
