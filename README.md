@@ -71,7 +71,7 @@ image = [imageCache imageFromKey:identifier withSize:size];
 ```ObjectiveC
 NSURL *url;
 UIImageView *imageView;
-[imageView HMCSetImageFromURL:url];
+[imageView HMCSetImageFromURL:url forState: UIControlStateNormal];
 ```
 
 ### To set image to UIButton from URL
