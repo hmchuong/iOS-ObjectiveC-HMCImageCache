@@ -10,6 +10,10 @@
 
 @interface UIImageView(HMCImageCache)
 
+- (NSString *)getNormalCachedImageKey;
+
+- (NSString *)getHighlightedCachedImageKey;
+
 /**
  Download, cache and set image to UIImageView
  
@@ -17,6 +21,6 @@
  @param state state of control
  */
 - (void)HMCSetImageFromURL:(NSURL *) url
-                  forState:(UIControlState)state;;
+                  forState:(UIControlState)state;
 
 @end

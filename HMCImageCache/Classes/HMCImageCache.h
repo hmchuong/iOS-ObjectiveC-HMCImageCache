@@ -67,7 +67,7 @@
  */
 - (void)imageFromURL:(NSURL *)url
       withTargetSize:(CGSize)size
-          completion:(void(^)(UIImage *image))completionCallback
+          completion:(void(^)(UIImage *image, NSString *key))completionCallback
        callbackQueue:(dispatch_queue_t)queue;
 
 /**

@@ -452,18 +452,18 @@
 
 - (void)imageFromURL:(NSURL *)url
       withTargetSize:(CGSize)size
-          completion:(void (^)(UIImage *))completionCallback
+          completion:(void (^)(UIImage *, NSString *))completionCallback
        callbackQueue:(dispatch_queue_t)queue {
     
     // Check existed file
     NSString *key = [self sanitizeFileNameString:url.absoluteString];
-    
+    NSString *thumbnailKey = [NSString stringWithFormat:@"%@-%fx%f",key,size.width,size.height];
     
     UIImage *__block result = [self imageFromKey:key withSize:size];
     
     if (result != nil) {
         dispatch_async(queue, ^{
-            completionCallback(result);
+            completionCallback(result, thumbnailKey);
         });
     } else{
         
@@ -474,7 +474,7 @@
             return [NSURL fileURLWithPath:[self getFilePathFromKey:key]];
         } finishBlock:^(NSURL *sourceUrl, NSString *identifier, NSURL *fileLocation, NSError *error) {
             result = [self imageFromKey:key withSize:size];
-            completionCallback(result);
+            completionCallback(result, thumbnailKey);
         } queue:queue];
         
     }

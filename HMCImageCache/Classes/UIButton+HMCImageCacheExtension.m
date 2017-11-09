@@ -7,6 +7,7 @@
 
 #import "UIButton+HMCImageCacheExtension.h"
 #import "HMCImageCache.h"
+#import <objc/runtime.h>
 
 @implementation UIButton(HMCImageCache)
 
@@ -29,9 +30,10 @@
     }
     [HMCImageCache.sharedInstance imageFromURL:url
                                 withTargetSize:self.frame.size
-                                    completion:^(UIImage *image) {
+                                    completion:^(UIImage *image, NSString *key) {
                                         [self setImage:image
                                               forState:state];
+                                        objc_setAssociatedObject(self, @"_caching_image_key", key, OBJC_ASSOCIATION_RETAIN);
                                     } callbackQueue:dispatch_get_main_queue()];
 }
 
