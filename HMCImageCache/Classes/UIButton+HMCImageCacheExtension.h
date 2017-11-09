@@ -19,4 +19,11 @@
 - (void)HMCSetImageFromURL:(NSURL *) url
                   forState:(UIControlState)state;
 
+/**
+ Get key of cached image
+
+ @return cached image key
+ */
+- (NSString *)getCachedImageKey;
+
 @end
