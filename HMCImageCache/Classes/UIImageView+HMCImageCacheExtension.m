@@ -23,6 +23,12 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
     return objc_getAssociatedObject(self, &highlightedKey);
 }
 
+/**
+ Get size of image from url
+
+ @param url url to get size
+ @return size of image from url
+ */
 - (CGSize)getSizeOfUrl:(NSURL *)url {
     
     NSMutableDictionary *sizes = objc_getAssociatedObject(self, &sizeOfUrlKey);
@@ -42,6 +48,12 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
     return CGSizeMake([(NSNumber *)size[0] floatValue], [(NSNumber *)size[1] floatValue]);
 }
 
+/**
+ store size of image with url
+
+ @param size size to store
+ @param url url of size
+ */
 - (void)setSize:(CGSize)size ofUrl:(NSURL *)url {
     
     NSMutableDictionary *sizes = objc_getAssociatedObject(self, &sizeOfUrlKey);
@@ -59,9 +71,10 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
         return;
     }
     
-    // Choosing target size
+    // Load and set image
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
+        // Choosing suitable size
         CGSize targetSize = self.frame.size;
         CGSize originSize = [self getSizeOfUrl:url];
         if (targetSize.height * targetSize.width > originSize.height * originSize.width && originSize.height > 0 && originSize.width > 0) {
@@ -69,6 +82,7 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
             targetSize.width = originSize.width;
         }
         
+        // Get image 
         [HMCImageCache.sharedInstance imageFromURL:url
                                     withTargetSize:targetSize
                                         completion:^(UIImage *image, NSString *key) {

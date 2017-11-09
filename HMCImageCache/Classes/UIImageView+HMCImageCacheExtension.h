@@ -10,8 +10,18 @@
 
 @interface UIImageView(HMCImageCache)
 
+/**
+ Get cached normal image key
+
+ @return key represents normal cached image
+ */
 - (NSString *)getNormalCachedImageKey;
 
+/**
+ Get cached highlighted image key
+
+ @return key represents highlighted cached image
+ */
 - (NSString *)getHighlightedCachedImageKey;
 
 /**
