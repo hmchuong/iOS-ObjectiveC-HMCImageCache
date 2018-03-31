@@ -120,6 +120,10 @@
 - (UIImage *)imageFromKey:(NSString *)key
                  withSize:(CGSize)size {
     
+    if (size.width == 0 || size.height == 0) {
+        return [self imageFromKey:key storeToMem:YES];
+    }
+    
     NSString *thumbnailKey = [NSString stringWithFormat:@"%@-%fx%f",key,size.width,size.height];
     UIImage *image = [self imageFromKey:thumbnailKey storeToMem:YES];
     if (image == nil) {
@@ -451,14 +455,15 @@
 }
 
 - (void)imageFromURL:(NSURL *)url
-      withTargetSize:(CGSize)size
+      withTargetSize:(CGSize(^)(void))sizeBlock
           completion:(void (^)(UIImage *, NSString *))completionCallback
        callbackQueue:(dispatch_queue_t)queue {
     
     // Check existed file
     NSString *key = [self sanitizeFileNameString:url.absoluteString];
-    NSString *thumbnailKey = [NSString stringWithFormat:@"%@-%fx%f",key,size.width,size.height];
     
+    CGSize __block size = sizeBlock();
+    NSString *thumbnailKey = [NSString stringWithFormat:@"%@-%fx%f",key,size.width,size.height];
     UIImage *__block result = [self imageFromKey:key withSize:size];
     
     if (result != nil) {
@@ -473,6 +478,7 @@
         } destination:^NSURL *(NSURL *sourceUrl, NSString *identifier) {
             return [NSURL fileURLWithPath:[self getFilePathFromKey:key]];
         } finishBlock:^(NSURL *sourceUrl, NSString *identifier, NSURL *fileLocation, NSError *error) {
+            size = sizeBlock();
             result = [self imageFromKey:key withSize:size];
             completionCallback(result, thumbnailKey);
         } queue:queue];

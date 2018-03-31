@@ -61,12 +61,12 @@
  Get image from url with target size
 
  @param url url to download image
- @param size size of target image
+ @param sizeBlock block tp get size of image
  @param completionCallback callback to get target image
  @param queue queue to callback
  */
 - (void)imageFromURL:(NSURL *)url
-      withTargetSize:(CGSize)size
+      withTargetSize:(CGSize(^)(void))sizeBlock
           completion:(void(^)(UIImage *image, NSString *key))completionCallback
        callbackQueue:(dispatch_queue_t)queue;
 

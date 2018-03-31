@@ -8,12 +8,15 @@
 #import "UIImageView+HMCImageCacheExtension.h"
 #import "HMCImageCache.h"
 #import <objc/runtime.h>
+#import "HMCDownloadManager.h"
 
 @implementation UIImageView(HMCImageCache)
 
 static NSString *normalKey = @"_caching_normal_image_key";
 static NSString *highlightedKey = @"_caching_highlighted_image_key";
 static NSString *sizeOfUrlKey = @"_caching_image_size";
+static NSString *urlNormalKey = @"_caching_image_url";
+static NSString *urlHighlightedKey = @"_caching_highlighted_url";
 
 - (NSString *)getNormalCachedImageKey {
     return objc_getAssociatedObject(self, &normalKey);
@@ -21,6 +24,22 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
 
 - (NSString *)getHighlightedCachedImageKey {
     return objc_getAssociatedObject(self, &highlightedKey);
+}
+
+- (NSURL *)getCurrentNormalImageUrl {
+    return objc_getAssociatedObject(self, &urlNormalKey);
+}
+
+- (void)setCurrentNormalImageUrl:(NSURL *)url {
+    objc_setAssociatedObject(self, &urlNormalKey, url, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (NSURL *)getCurrentHighlightedImageUrl {
+    return objc_getAssociatedObject(self, &urlHighlightedKey);
+}
+
+- (void)setCurrentHighlightedImageUrl:(NSURL *)url {
+    objc_setAssociatedObject(self, &urlHighlightedKey, url, OBJC_ASSOCIATION_RETAIN);
 }
 
 /**
@@ -67,35 +86,36 @@ static NSString *sizeOfUrlKey = @"_caching_image_size";
 - (void)HMCSetImageFromURL:(NSURL *)url
                   forState:(UIControlState)state{
     
-    if (self.frame.size.height == 0 && self.frame.size.width == 0) {
-        return;
+    if (state == UIControlStateNormal) {
+        NSURL *currentUrl = [self getCurrentNormalImageUrl];
+        if (currentUrl != NULL && currentUrl.absoluteString == url.absoluteString) {
+            [HMCDownloadManager.sharedBackgroundManager pauseDownload:currentUrl];
+        }
+        [self setCurrentNormalImageUrl:url];
+    } else {
+        NSURL *currentUrl = [self getCurrentHighlightedImageUrl];
+        if (currentUrl != NULL && currentUrl.absoluteString == url.absoluteString) {
+            [HMCDownloadManager.sharedBackgroundManager pauseDownload:currentUrl];
+        }
+        [self setCurrentHighlightedImageUrl:url];
     }
     
-    // Load and set image
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
-        // Choosing suitable size
-        CGSize targetSize = self.frame.size;
-        CGSize originSize = [self getSizeOfUrl:url];
-        if (targetSize.height * targetSize.width > originSize.height * originSize.width && originSize.height > 0 && originSize.width > 0) {
-            targetSize.height = originSize.height;
-            targetSize.width = originSize.width;
-        }
-        
-        // Get image 
         [HMCImageCache.sharedInstance imageFromURL:url
-                                    withTargetSize:targetSize
-                                        completion:^(UIImage *image, NSString *key) {
-                                            if (state == UIControlStateNormal) {
-                                                
-                                                objc_setAssociatedObject(self, &normalKey, key, OBJC_ASSOCIATION_RETAIN);
-                                                [self setImage:image];
-                                            } else {
-                                                
-                                                objc_setAssociatedObject(self, &highlightedKey, key, OBJC_ASSOCIATION_RETAIN);
-                                                [self setHighlightedImage:image];
-                                            }
-                                        } callbackQueue:dispatch_get_main_queue()];
+                                    withTargetSize:^CGSize{
+                                        return self.frame.size;
+                                    } completion:^(UIImage *image, NSString *key) {
+                                        if (state == UIControlStateNormal) {
+                                            
+                                            objc_setAssociatedObject(self, &normalKey, key, OBJC_ASSOCIATION_RETAIN);
+                                            [self setImage:image];
+                                        } else {
+                                            
+                                            objc_setAssociatedObject(self, &highlightedKey, key, OBJC_ASSOCIATION_RETAIN);
+                                            [self setHighlightedImage:image];
+                                        }
+                                    } callbackQueue:dispatch_get_main_queue()];
     });
     
 }

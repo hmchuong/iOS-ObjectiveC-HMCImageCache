@@ -62,27 +62,16 @@ static NSString *cachingImageKey = @"_caching_image_key";
 - (void)HMCSetImageFromURL:(NSURL *)url
                   forState:(UIControlState)state {
     
-    if (self.frame.size.height == 0 && self.frame.size.width == 0) {
-        return;
-    }
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
-        // Choosing suitable size
-        CGSize targetSize = self.frame.size;
-        CGSize originSize = [self getSizeOfUrl:url];
-        if (targetSize.height * targetSize.width > originSize.height * originSize.width && originSize.height > 0 && originSize.width > 0) {
-            targetSize.height = originSize.height;
-            targetSize.width = originSize.width;
-        }
-        
         [HMCImageCache.sharedInstance imageFromURL:url
-                                    withTargetSize:self.frame.size
-                                        completion:^(UIImage *image, NSString *key) {
-                                            [self setImage:image
-                                                  forState:state];
-                                            objc_setAssociatedObject(self, &cachingImageKey, key, OBJC_ASSOCIATION_RETAIN);
-                                        } callbackQueue:dispatch_get_main_queue()];
+                                    withTargetSize:^CGSize{
+                                        return self.frame.size;
+                                    } completion:^(UIImage *image, NSString *key) {
+                                        [self setImage:image
+                                              forState:state];
+                                        objc_setAssociatedObject(self, &cachingImageKey, key, OBJC_ASSOCIATION_RETAIN);
+                                    } callbackQueue:dispatch_get_main_queue()];
     });
     
 }
