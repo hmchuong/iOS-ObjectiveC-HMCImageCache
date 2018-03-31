@@ -1,0 +1,22 @@
+PODS:
+  - HMCDownloadManager (0.1.0)
+  - HMCImageCache (0.1.7):
+    - HMCDownloadManager (~> 0.1.0)
+    - HMCThreadSafeMutableCollection (~> 0.1.0)
+  - HMCThreadSafeMutableCollection (0.1.0)
+
+DEPENDENCIES:
+  - HMCImageCache (from `../`)
+
+EXTERNAL SOURCES:
+  HMCImageCache:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HMCDownloadManager: a053a9f8250030e3fb07479ef981421160f0cb57
+  HMCImageCache: 377254fc38ac0e23e28aec2c32465c5f769e99ba
+  HMCThreadSafeMutableCollection: 16d137f0d3480fe66fe04ba7e288a7e5a5e3d224
+
+PODFILE CHECKSUM: 90e6b878201dfcb62fe3c8c02f8455b25213fe04
+
+COCOAPODS: 1.4.0
