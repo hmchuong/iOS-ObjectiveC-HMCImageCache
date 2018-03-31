@@ -454,6 +454,12 @@
     return [[fileName componentsSeparatedByCharactersInSet:illegalFileNameCharacters] componentsJoinedByString:@""];
 }
 
+- (CGSize)getRoundedSize:(CGSize) size {
+    size.width = ((int)size.width) / 10 * 10;
+    size.height = ((int)size.height) / 10 * 10;
+    return size;
+}
+
 - (void)imageFromURL:(NSURL *)url
       withTargetSize:(CGSize(^)(void))sizeBlock
           completion:(void (^)(UIImage *, NSString *))completionCallback
@@ -463,6 +469,8 @@
     NSString *key = [self sanitizeFileNameString:url.absoluteString];
     
     CGSize __block size = sizeBlock();
+    size = [self getRoundedSize:size];
+    
     NSString *thumbnailKey = [NSString stringWithFormat:@"%@-%fx%f",key,size.width,size.height];
     UIImage *__block result = [self imageFromKey:key withSize:size];
     
@@ -478,7 +486,7 @@
         } destination:^NSURL *(NSURL *sourceUrl, NSString *identifier) {
             return [NSURL fileURLWithPath:[self getFilePathFromKey:key]];
         } finishBlock:^(NSURL *sourceUrl, NSString *identifier, NSURL *fileLocation, NSError *error) {
-            size = sizeBlock();
+            size = [self getRoundedSize:sizeBlock()];
             result = [self imageFromKey:key withSize:size];
             completionCallback(result, thumbnailKey);
         } queue:queue];

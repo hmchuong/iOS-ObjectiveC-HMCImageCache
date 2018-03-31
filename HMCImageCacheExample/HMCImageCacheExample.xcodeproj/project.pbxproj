@@ -8,24 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		69025A49206F3F8F00F66EBE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69025A48206F3F8F00F66EBE /* AppDelegate.m */; };
-		69025A4C206F3F8F00F66EBE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69025A4B206F3F8F00F66EBE /* ViewController.m */; };
 		69025A4F206F3F8F00F66EBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69025A4D206F3F8F00F66EBE /* Main.storyboard */; };
 		69025A51206F3F9000F66EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69025A50206F3F9000F66EBE /* Assets.xcassets */; };
 		69025A54206F3F9000F66EBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69025A52206F3F9000F66EBE /* LaunchScreen.storyboard */; };
 		69025A57206F3F9000F66EBE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69025A56206F3F9000F66EBE /* main.m */; };
+		69025A5F206F411E00F66EBE /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69025A5E206F411E00F66EBE /* ExampleTableViewController.m */; };
+		69025A62206F420500F66EBE /* ExampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69025A61206F420500F66EBE /* ExampleTableViewCell.m */; };
+		69025A64206F42B700F66EBE /* urls.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69025A63206F42B700F66EBE /* urls.plist */; };
+		A7F6BD5D4BC2E91CD666B882 /* libPods-HMCImageCacheExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DA6F69AF1B09A6E6FD8B1B /* libPods-HMCImageCacheExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C4C5BA87B6E373F8A06D0B9 /* Pods-HMCImageCacheExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMCImageCacheExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMCImageCacheExample/Pods-HMCImageCacheExample.release.xcconfig"; sourceTree = "<group>"; };
+		35357A01DA7B807D5AB5D6EA /* Pods-HMCImageCacheExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMCImageCacheExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMCImageCacheExample/Pods-HMCImageCacheExample.debug.xcconfig"; sourceTree = "<group>"; };
+		51DA6F69AF1B09A6E6FD8B1B /* libPods-HMCImageCacheExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HMCImageCacheExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69025A44206F3F8F00F66EBE /* HMCImageCacheExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMCImageCacheExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69025A47206F3F8F00F66EBE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69025A48206F3F8F00F66EBE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		69025A4A206F3F8F00F66EBE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		69025A4B206F3F8F00F66EBE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		69025A4E206F3F8F00F66EBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69025A50206F3F9000F66EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69025A53206F3F9000F66EBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69025A55206F3F9000F66EBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69025A56206F3F9000F66EBE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69025A5D206F411E00F66EBE /* ExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewController.h; sourceTree = "<group>"; };
+		69025A5E206F411E00F66EBE /* ExampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTableViewController.m; sourceTree = "<group>"; };
+		69025A60206F420500F66EBE /* ExampleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewCell.h; sourceTree = "<group>"; };
+		69025A61206F420500F66EBE /* ExampleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTableViewCell.m; sourceTree = "<group>"; };
+		69025A63206F42B700F66EBE /* urls.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = urls.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F6BD5D4BC2E91CD666B882 /* libPods-HMCImageCacheExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +54,8 @@
 			children = (
 				69025A46206F3F8F00F66EBE /* HMCImageCacheExample */,
 				69025A45206F3F8F00F66EBE /* Products */,
+				D0A8739E19A59105E444E71D /* Pods */,
+				83BE9D0E4B5C2C3BB328A22D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +72,35 @@
 			children = (
 				69025A47206F3F8F00F66EBE /* AppDelegate.h */,
 				69025A48206F3F8F00F66EBE /* AppDelegate.m */,
-				69025A4A206F3F8F00F66EBE /* ViewController.h */,
-				69025A4B206F3F8F00F66EBE /* ViewController.m */,
 				69025A4D206F3F8F00F66EBE /* Main.storyboard */,
 				69025A50206F3F9000F66EBE /* Assets.xcassets */,
 				69025A52206F3F9000F66EBE /* LaunchScreen.storyboard */,
 				69025A55206F3F9000F66EBE /* Info.plist */,
 				69025A56206F3F9000F66EBE /* main.m */,
+				69025A5D206F411E00F66EBE /* ExampleTableViewController.h */,
+				69025A5E206F411E00F66EBE /* ExampleTableViewController.m */,
+				69025A60206F420500F66EBE /* ExampleTableViewCell.h */,
+				69025A61206F420500F66EBE /* ExampleTableViewCell.m */,
+				69025A63206F42B700F66EBE /* urls.plist */,
 			);
 			path = HMCImageCacheExample;
+			sourceTree = "<group>";
+		};
+		83BE9D0E4B5C2C3BB328A22D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51DA6F69AF1B09A6E6FD8B1B /* libPods-HMCImageCacheExample.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0A8739E19A59105E444E71D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35357A01DA7B807D5AB5D6EA /* Pods-HMCImageCacheExample.debug.xcconfig */,
+				0C4C5BA87B6E373F8A06D0B9 /* Pods-HMCImageCacheExample.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69025A5A206F3F9000F66EBE /* Build configuration list for PBXNativeTarget "HMCImageCacheExample" */;
 			buildPhases = (
+				B940AB2B40B46AE676ACBAD2 /* [CP] Check Pods Manifest.lock */,
 				69025A40206F3F8F00F66EBE /* Sources */,
 				69025A41206F3F8F00F66EBE /* Frameworks */,
 				69025A42206F3F8F00F66EBE /* Resources */,
+				59E8C8135BA17D5470F8FA6A /* [CP] Embed Pods Frameworks */,
+				F1C399FB6B88A9D77D777752 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,19 +165,72 @@
 			files = (
 				69025A54206F3F9000F66EBE /* LaunchScreen.storyboard in Resources */,
 				69025A51206F3F9000F66EBE /* Assets.xcassets in Resources */,
+				69025A64206F42B700F66EBE /* urls.plist in Resources */,
 				69025A4F206F3F8F00F66EBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		59E8C8135BA17D5470F8FA6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HMCImageCacheExample/Pods-HMCImageCacheExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B940AB2B40B46AE676ACBAD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HMCImageCacheExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1C399FB6B88A9D77D777752 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HMCImageCacheExample/Pods-HMCImageCacheExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		69025A40206F3F8F00F66EBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69025A4C206F3F8F00F66EBE /* ViewController.m in Sources */,
+				69025A62206F420500F66EBE /* ExampleTableViewCell.m in Sources */,
 				69025A57206F3F9000F66EBE /* main.m in Sources */,
+				69025A5F206F411E00F66EBE /* ExampleTableViewController.m in Sources */,
 				69025A49206F3F8F00F66EBE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +369,7 @@
 		};
 		69025A5B206F3F9000F66EBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35357A01DA7B807D5AB5D6EA /* Pods-HMCImageCacheExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +386,7 @@
 		};
 		69025A5C206F3F9000F66EBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C4C5BA87B6E373F8A06D0B9 /* Pods-HMCImageCacheExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

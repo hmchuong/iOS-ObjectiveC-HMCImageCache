@@ -7,8 +7,12 @@
 //
 
 #import "ExampleTableViewController.h"
+#import "ExampleTableViewCell.h"
+#import <HMCImageCache/UIImageView+HMCImageCacheExtension.h>
 
 @interface ExampleTableViewController ()
+
+@property (strong, nonatomic) NSArray<NSString *> *urls;
 
 @end
 
@@ -22,7 +26,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"urls" ofType:@"plist"];
+    NSDictionary *uRLDict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    _urls = [uRLDict mutableArrayValueForKey:@"urls"];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -32,24 +42,26 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [_urls count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+    ExampleTableViewCell *cell = (ExampleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
+    NSInteger index = indexPath.row;
+    [cell.imageView HMCSetImageFromURL:[NSURL URLWithString:_urls[index]] forState:UIControlStateNormal];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 200;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

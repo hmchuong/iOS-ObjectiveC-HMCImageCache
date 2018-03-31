@@ -82,4 +82,6 @@
  */
 - (void)removeAllCache;
 
+- (NSString *)sanitizeFileNameString:(NSString *)fileName;
+
 @end

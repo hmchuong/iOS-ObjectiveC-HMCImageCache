@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   urls.plist
-   HMCImageCacheExample
-
-   Created by Chuong Huynh on 3/31/18.
-   Copyright (c) 2018 Chuong Huynh. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<dict>
+	<key>urls</key>
+	<array>
+		<string>https://picsum.photos/200/300/?image=807</string>
+		<string>https://picsum.photos/200/300/?image=806</string>
+		<string>https://picsum.photos/200/300/?image=805</string>
+		<string>https://picsum.photos/200/300/?image=804</string>
+		<string>https://picsum.photos/200/300/?image=803</string>
+		<string>https://picsum.photos/200/300/?image=802</string>
+		<string>https://picsum.photos/200/300/?image=801</string>
+		<string>https://picsum.photos/200/300/?image=800</string>
+		<string>https://picsum.photos/200/300/?image=799</string>
+		<string>https://picsum.photos/200/300/?image=798</string>
+		<string>https://picsum.photos/200/300/?image=797</string>
+		<string>https://picsum.photos/200/300/?image=796</string>
+		<string>https://picsum.photos/200/300/?image=690</string>
+		<string>https://picsum.photos/200/300/?image=38</string>
+		<string>http://lorempixel.com/400/200/sports/1/Dummy-Text</string>
+		<string>http://lorempixel.com/400/200/sports/Dummy-Text</string>
+		<string>http://lorempixel.com/400/200/sports/1</string>
+		<string>http://lorempixel.com/400/200/sports</string>
+		<string>http://lorempixel.com/g/400/200</string>
+		<string>http://lorempixel.com/400/200</string>
+		<string>http://www.gstatic.com/webp/gallery/5.jpg</string>
+		<string>http://www.gstatic.com/webp/gallery/4.jpg</string>
+		<string>http://www.gstatic.com/webp/gallery/3.jpg</string>
+		<string>http://www.gstatic.com/webp/gallery/2.jpg</string>
+		<string>https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg</string>
+		<string>https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Common-dog-behaviors-explained.jpg?itok=FSzwbBoi</string>
+		<string>http://www.gstatic.com/webp/gallery/1.jpg</string>
+		<string>https://fthmb.tqn.com/v7cQa3odVOAR-j-kTP8u84sRYPo=/3240x2160/filters:no_upscale():fill(transparent,1)/about/Deafdog-GettyImages-614292054-595f9a1f3df78c554d66a0d2.jpg</string>
+		<string>https://static.pexels.com/photos/356378/pexels-photo-356378.jpeg</string>
+		<string>http://www.gstatic.com/webp/gallery/1.jpg</string>
+	</array>
+</dict>
 </plist>

@@ -100,20 +100,46 @@ static NSString *urlHighlightedKey = @"_caching_highlighted_url";
         [self setCurrentHighlightedImageUrl:url];
     }
     
+    NSString *key = [HMCImageCache.sharedInstance sanitizeFileNameString:url.absoluteString];
+    if (state == UIControlStateNormal) {
+        
+        objc_setAssociatedObject(self, &normalKey, key, OBJC_ASSOCIATION_RETAIN);
+    } else {
+        
+        objc_setAssociatedObject(self, &highlightedKey, key, OBJC_ASSOCIATION_RETAIN);
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         [HMCImageCache.sharedInstance imageFromURL:url
                                     withTargetSize:^CGSize{
-                                        return self.frame.size;
+                                        CGSize __block size;
+                                        if (![NSThread isMainThread]) {
+                                            dispatch_sync(dispatch_get_main_queue(), ^{
+                                                size = self.frame.size;
+                                            });
+                                        } else {
+                                            size = self.frame.size;
+                                        }
+                                        return size;
                                     } completion:^(UIImage *image, NSString *key) {
                                         if (state == UIControlStateNormal) {
-                                            
-                                            objc_setAssociatedObject(self, &normalKey, key, OBJC_ASSOCIATION_RETAIN);
-                                            [self setImage:image];
+                                            NSString *currentKey = [self getNormalCachedImageKey];
+                                            if ([key containsString:currentKey]) {
+                                                objc_setAssociatedObject(self, &normalKey, key, OBJC_ASSOCIATION_RETAIN);
+                                                [self setImage:image];
+                                            } else {
+                                                NSLog(key);
+                                            }
+                                                
                                         } else {
-                                            
-                                            objc_setAssociatedObject(self, &highlightedKey, key, OBJC_ASSOCIATION_RETAIN);
-                                            [self setHighlightedImage:image];
+                                            NSString *currentKey = [self getHighlightedCachedImageKey];
+                                            if ([key containsString:currentKey]) {
+                                                objc_setAssociatedObject(self, &highlightedKey, key, OBJC_ASSOCIATION_RETAIN);
+                                                [self setHighlightedImage:image];
+                                            } else {
+                                                NSLog(key);
+                                            }
                                         }
                                     } callbackQueue:dispatch_get_main_queue()];
     });
